@@ -13,6 +13,14 @@ export function Especialidad() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [topOffset, setTopOffset] = useState(-100);
   const [bottomOffset, setBottomOffset] = useState(100);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,6 +31,7 @@ export function Especialidad() {
   }, []);
 
   useEffect(() => {
+    if (isMobile) return;
     const interval = setInterval(() => {
       setTopOffset(100);
       setBottomOffset(-100);
@@ -37,7 +46,7 @@ export function Especialidad() {
       }, 1000);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isMobile]);
 
   return (
     <section
@@ -55,9 +64,9 @@ export function Especialidad() {
             Más de 100 telas automotrices tipo original, incluyendo dobetina, para transformar tu auto con estilo.
           </p>
         </div>
-        <div className="mt-16 relative overflow-hidden h-[700px]">
-          <img src={topImages[currentIndex]} alt="Imagen superior" className="absolute left-0 top-0 w-1/2 h-full object-cover transition-transform duration-1000 ease-in-out" style={{transform: `translateX(${topOffset}%)`}} />
-          <img src={bottomImages[currentIndex]} alt="Imagen inferior" className="absolute right-0 top-0 w-1/2 h-full object-cover transition-transform duration-1000 ease-in-out" style={{transform: `translateX(${bottomOffset}%)`}} />
+        <div className="mt-16 relative overflow-hidden h-[400px] md:h-[700px]">
+          <img src={topImages[currentIndex]} alt="Imagen superior" className={`absolute ${isMobile ? 'left-0 top-0 w-full h-1/2' : 'left-0 top-0 w-1/2 h-full'} object-cover transition-transform duration-1000 ease-in-out`} style={{transform: isMobile ? 'none' : `translateX(${topOffset}%)`}} />
+          <img src={bottomImages[currentIndex]} alt="Imagen inferior" className={`absolute ${isMobile ? 'left-0 bottom-0 w-full h-1/2' : 'right-0 top-0 w-1/2 h-full'} object-cover transition-transform duration-1000 ease-in-out`} style={{transform: isMobile ? 'none' : `translateX(${bottomOffset}%)`}} />
         </div>
       </div>
     </section>
