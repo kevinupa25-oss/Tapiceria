@@ -16,7 +16,7 @@ export function Location() {
             <span className="text-white">Ubicaciones</span>
           </h2>
           <p className="text-gray-100 max-w-2xl mx-auto">
-            Visítanos en nuestras sucursales de Proveedora de Tapiceros de Aguascalientes en Aguascalientes, Fresnillo y Zacatecas. Estamos aquí para atenderte.
+            Visítanos en nuestras sucursales de Proveedora de Tapiceros de Aguascalientes en Aguascalientes, Fresnillo, Zacatecas. Estamos aquí para atenderte.
           </p>
         </div>
 
