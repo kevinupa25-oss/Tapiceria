@@ -33,7 +33,7 @@ export function AboutUs() {
   return (
     <section
       id="enfoque"
-      className="relative overflow-hidden pt-24 bg-cover bg-center text-white"
+      className="relative overflow-hidden bg-cover bg-center text-white"
       style={{ 
         backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${fondo1})`,
         paddingBottom: '300px'

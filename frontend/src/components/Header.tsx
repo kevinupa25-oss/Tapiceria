@@ -29,7 +29,7 @@ export function Header() {
   return (
     <header
       className="sticky top-0 z-50 shadow-sm border-b"
-      style={{ backgroundColor: '#ffa500' }}
+      style={{ backgroundColor: '#ff5500' }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-8 md:py-10">

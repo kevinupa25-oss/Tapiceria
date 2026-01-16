@@ -119,7 +119,7 @@ export function Hero() {
 
           {/* Carrusel lado derecho */}
           <div className="relative">
-            <div className="relative z-10 w-full aspect-[16/9] overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur">
+            <div className="relative z-10 w-full aspect-[5/4] overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur">
               <ImageWithFallback
                 src={images[currentImage]}
                 alt="Viniles y telas para tapicería"

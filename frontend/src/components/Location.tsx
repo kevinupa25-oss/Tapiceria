@@ -35,7 +35,7 @@ export function Location() {
             />
             <div className="p-4 text-center">
               <h3 className="text-lg font-semibold mb-2" style={{ color: '#d1a14a' }}>Sucursal Fresnillo</h3>
-              <p className="text-gray-700 text-sm">Proveedora De Tapiceros<br />Fresnillo, Zacatecas</p>
+              <p className="text-gray-700 text-sm">Proveedora De Tapiceros<br />Fresnillo, Zacatecas<br />Tel: 4939323955</p>
             </div>
           </div>
 
@@ -52,10 +52,10 @@ export function Location() {
   />
   <div className="p-4 text-center">
     <h3 className="text-lg font-semibold mb-2" style={{ color: '#d1a14a' }}>
-      Sucursal Aguascalientes 2
+      Sucursal MATRIZ
     </h3>
     <p className="text-gray-700 text-sm">
-      Calle Héroe de Nacozari Norte 2204<br />Aguascalientes, Ags.
+      Calle Héroe de Nacozari Norte 2204<br />Aguascalientes, Ags.<br />Tel: 4499143641
     </p>
   </div>
 </div>
@@ -74,7 +74,7 @@ export function Location() {
             />
             <div className="p-4 text-center">
               <h3 className="text-lg font-semibold mb-2" style={{ color: '#d1a14a' }}>Sucursal Aguascalientes</h3>
-              <p className="text-gray-700 text-sm">Av. de los Maestros #903<br />La España, Aguascalientes</p>
+              <p className="text-gray-700 text-sm">Av. de los Maestros #903<br />La España, Aguascalientes<br />Tel: 4499788321</p>
             </div>
           </div>
         </div>

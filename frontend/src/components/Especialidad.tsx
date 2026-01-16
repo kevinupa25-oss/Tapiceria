@@ -42,7 +42,7 @@ export function Especialidad() {
   return (
     <section
       id="especialidad"
-      className="relative overflow-hidden my-40 bg-cover bg-center text-white"
+      className="relative overflow-hidden bg-cover bg-center text-white"
       style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${fondo2})` }}
     >
       <div className="container mx-auto px-4 relative z-10">
@@ -55,7 +55,7 @@ export function Especialidad() {
             Más de 100 telas automotrices tipo original, incluyendo dobetina, para transformar tu auto con estilo.
           </p>
         </div>
-        <div className="mt-16 relative overflow-hidden h-96">
+        <div className="mt-16 relative overflow-hidden h-[700px]">
           <img src={topImages[currentIndex]} alt="Imagen superior" className="absolute left-0 top-0 w-1/2 h-full object-cover transition-transform duration-1000 ease-in-out" style={{transform: `translateX(${topOffset}%)`}} />
           <img src={bottomImages[currentIndex]} alt="Imagen inferior" className="absolute right-0 top-0 w-1/2 h-full object-cover transition-transform duration-1000 ease-in-out" style={{transform: `translateX(${bottomOffset}%)`}} />
         </div>
