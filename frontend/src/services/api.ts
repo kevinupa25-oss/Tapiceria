@@ -1,18 +1,33 @@
 const API_URL = import.meta.env.VITE_API_URL || '/api';
 
+async function handleResponse(response: Response) {
+  if (response.ok) return response.json().catch(() => null);
+  // try to extract server message
+  let details = '';
+  try {
+    const body = await response.json();
+    details = body?.error || body?.message || JSON.stringify(body);
+  } catch (e) {
+    try {
+      details = await response.text();
+    } catch (e) {
+      details = '';
+    }
+  }
+  throw new Error(`HTTP ${response.status} ${response.statusText}${details ? ` - ${details}` : ''}`);
+}
+
 export const productsAPI = {
   // Obtener todos los productos
   getAll: async () => {
     const response = await fetch(`${API_URL}/products`);
-    if (!response.ok) throw new Error('Error al obtener productos');
-    return response.json();
+    return handleResponse(response);
   },
 
   // Obtener un producto por ID
   getById: async (id: string) => {
     const response = await fetch(`${API_URL}/products/${id}`);
-    if (!response.ok) throw new Error('Error al obtener producto');
-    return response.json();
+    return handleResponse(response);
   },
 
   // Crear producto
@@ -24,8 +39,7 @@ export const productsAPI = {
       },
       body: JSON.stringify(product),
     });
-    if (!response.ok) throw new Error('Error al crear producto');
-    return response.json();
+    return handleResponse(response);
   },
 
   // Actualizar producto
@@ -37,8 +51,7 @@ export const productsAPI = {
       },
       body: JSON.stringify(product),
     });
-    if (!response.ok) throw new Error('Error al actualizar producto');
-    return response.json();
+    return handleResponse(response);
   },
 
   // Eliminar producto
@@ -46,7 +59,6 @@ export const productsAPI = {
     const response = await fetch(`${API_URL}/products/${id}`, {
       method: 'DELETE',
     });
-    if (!response.ok) throw new Error('Error al eliminar producto');
-    return response.json();
+    return handleResponse(response);
   },
 };
