@@ -1,19 +1,45 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-const Header = lazy(() => import('./components/Header'));
-const Hero = lazy(() => import('./components/Hero'));
-const AboutUs = lazy(() => import('./components/AboutUs'));
-const Especialidad = lazy(() => import('./components/Especialidad'));
-const ProductGrid = lazy(() => import('./components/ProductGrid'));
-const AllProductsPage = lazy(() => import('./components/AllProductsPage'));
-const Location = lazy(() => import('./components/Location'));
-const ShoppingCart = lazy(() => import('./components/ShoppingCart'));
-const Footer = lazy(() => import('./components/Footer'));
-const AdminPanel = lazy(() => import('./components/AdminPanel'));
-const SocialMediaFixed = lazy(() => import('./components/SocialMediaFixed'));
+const Header = lazy(() => import('./components/Header').then(module => ({ default: module.Header })));
+const Hero = lazy(() => import('./components/Hero').then(module => ({ default: module.Hero })));
+const AboutUs = lazy(() => import('./components/AboutUs').then(module => ({ default: module.AboutUs })));
+const Especialidad = lazy(() => import('./components/Especialidad').then(module => ({ default: module.Especialidad })));
+const ProductGrid = lazy(() => import('./components/ProductGrid').then(module => ({ default: module.ProductGrid })));
+const AllProductsPage = lazy(() => import('./components/AllProductsPage').then(module => ({ default: module.AllProductsPage })));
+const Location = lazy(() => import('./components/Location').then(module => ({ default: module.Location })));
+const ShoppingCart = lazy(() => import('./components/ShoppingCart').then(module => ({ default: module.ShoppingCart })));
+const Footer = lazy(() => import('./components/Footer').then(module => ({ default: module.Footer })));
+const AdminPanel = lazy(() => import('./components/AdminPanel').then(module => ({ default: module.AdminPanel })));
+const SocialMediaFixed = lazy(() => import('./components/SocialMediaFixed').then(module => ({ default: module.SocialMediaFixed })));
 import { toast } from 'sonner';
 import { Toaster } from './components/ui/sonner';
 import { productsAPI } from './services/api';
 import { useAuth } from './components/AuthContext';
+
+// Interfaces
+interface Product {
+  id: number;
+  name: string;
+  brand: string;
+  price: number;
+  image: string;
+  rating: number;
+  reviews: number;
+  sizes: number[];
+  colors: string[];
+  category: string;
+  description?: string;
+  gama?: string;
+}
+
+interface CartItem {
+  id: number;
+  name: string;
+  brand: string;
+  price: number;
+  size: number;
+  quantity: number;
+  image: string;
+}
 
 // Placeholder images
 const placeholderImage = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="500"%3E%3Crect fill="%23f3f4f6" width="400" height="500"/%3E%3C/svg%3E';
@@ -183,7 +209,7 @@ export default function App() {
     const loadProducts = async () => {
       try {
         const data = await productsAPI.getAll();
-        if (data.length > 0) {
+        if (data && data.length > 0) {
           setProducts(data.map((p: any) => ({ ...p, id: p._id })));
         } else {
           // Si no hay productos en la DB, usar mock data
