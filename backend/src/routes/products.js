@@ -33,13 +33,14 @@ router.post('/', async (req, res) => {
   try {
     let imageUrl = req.body.image;
     
+    // Por ahora, guardar la imagen como data URL directamente sin subir a Cloudinary
     // Si la imagen es un data URL, subirla a Cloudinary
-    if (imageUrl && imageUrl.startsWith('data:')) {
-      const result = await cloudinary.uploader.upload(imageUrl, {
-        folder: 'tapiceria',
-      });
-      imageUrl = result.secure_url;
-    }
+    // if (imageUrl && imageUrl.startsWith('data:')) {
+    //   const result = await cloudinary.uploader.upload(imageUrl, {
+    //     folder: 'tapiceria',
+    //   });
+    //   imageUrl = result.secure_url;
+    // }
 
     const product = new Product({
       name: req.body.name,
@@ -61,13 +62,14 @@ router.put('/:id', async (req, res) => {
   try {
     let imageUrl = req.body.image;
     
+    // Por ahora, guardar la imagen como data URL directamente sin subir a Cloudinary
     // Si la imagen es un data URL, subirla a Cloudinary
-    if (imageUrl && imageUrl.startsWith('data:')) {
-      const result = await cloudinary.uploader.upload(imageUrl, {
-        folder: 'tapiceria',
-      });
-      imageUrl = result.secure_url;
-    }
+    // if (imageUrl && imageUrl.startsWith('data:')) {
+    //   const result = await cloudinary.uploader.upload(imageUrl, {
+    //     folder: 'tapiceria',
+    //   });
+    //   imageUrl = result.secure_url;
+    // }
 
     const product = await Product.findByIdAndUpdate(
       req.params.id,
