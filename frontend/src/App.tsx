@@ -1,17 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { AboutUs } from './components/AboutUs';
-import { Especialidad } from './components/Especialidad';
-import { ProductGrid } from './components/ProductGrid';
-import { AllProductsPage } from './components/AllProductsPage';
-import { Location } from './components/Location';
-import { ShoppingCart, CartItem } from './components/ShoppingCart';
-import { Footer } from './components/Footer';
-import { Product } from './components/ProductCard';
-import { AuthProvider, useAuth } from './components/AuthContext';
-import { AdminPanel } from './components/AdminPanel';
-import { SocialMediaFixed } from './components/SocialMediaFixed';
+import { useState, useEffect, lazy, Suspense } from 'react';
+const Header = lazy(() => import('./components/Header'));
+const Hero = lazy(() => import('./components/Hero'));
+const AboutUs = lazy(() => import('./components/AboutUs'));
+const Especialidad = lazy(() => import('./components/Especialidad'));
+const ProductGrid = lazy(() => import('./components/ProductGrid'));
+const AllProductsPage = lazy(() => import('./components/AllProductsPage'));
+const Location = lazy(() => import('./components/Location'));
+const ShoppingCart = lazy(() => import('./components/ShoppingCart'));
+const Footer = lazy(() => import('./components/Footer'));
+const AdminPanel = lazy(() => import('./components/AdminPanel'));
+const SocialMediaFixed = lazy(() => import('./components/SocialMediaFixed'));
 import { toast } from 'sonner';
 import { Toaster } from './components/ui/sonner';
 import { productsAPI } from './services/api';
@@ -308,31 +306,73 @@ export default function App() {
   // Si el usuario es admin
   if (user?.isAdmin) {
     return (
-      <div className="min-h-screen bg-white">
-        <Header />
-        <AdminPanel 
-          products={products} 
-          onBack={() => setCurrentPage('home')}
-          onAddProduct={handleAddProduct}
-          onEditProduct={handleEditProduct}
-          onDeleteProduct={handleDeleteProduct}
-        />
-        <Footer />
-      </div>
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Cargando...</div>}>
+        <div className="min-h-screen bg-white">
+          <Header />
+          <AdminPanel 
+            products={products} 
+            onBack={() => setCurrentPage('home')}
+            onAddProduct={handleAddProduct}
+            onEditProduct={handleEditProduct}
+            onDeleteProduct={handleDeleteProduct}
+          />
+          <Footer />
+        </div>
+      </Suspense>
     );
   }
 
   // Si estamos en la página de todos los productos
   if (currentPage === 'all-products') {
     return (
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Cargando...</div>}>
+        <div className="min-h-screen bg-white">
+          <Header />
+          
+          <main>
+              <AllProductsPage 
+                products={products}
+                onBack={handleBackToHome}
+              />
+            </main>
+
+            <Footer />
+
+            <ShoppingCart
+              isOpen={isCartOpen}
+              onClose={() => setIsCartOpen(false)}
+              items={cartItems}
+              onUpdateQuantity={handleUpdateQuantity}
+              onRemoveItem={handleRemoveItem}
+            />
+
+            <SocialMediaFixed />
+
+            <Toaster />
+          </div>
+      </Suspense>
+    );
+  }
+
+  // Página principal
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Cargando...</div>}>
       <div className="min-h-screen bg-white">
         <Header />
-        
-        <main>
-            <AllProductsPage 
-              products={products}
-              onBack={handleBackToHome}
-            />
+          
+          <main>
+            <div id="inicio">
+              <Hero />
+            </div>
+            <Especialidad />
+            <AboutUs />
+            <div id="productos">
+              <ProductGrid 
+                products={products}
+                showAll={false}
+              />
+            </div>
+            <Location />
           </main>
 
           <Footer />
@@ -349,42 +389,6 @@ export default function App() {
 
           <Toaster />
         </div>
-    );
-  }
-
-  // Página principal
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
-        
-        <main>
-          <div id="inicio">
-            <Hero />
-          </div>
-          <Especialidad />
-          <AboutUs />
-          <div id="productos">
-            <ProductGrid 
-              products={products}
-              showAll={false}
-            />
-          </div>
-          <Location />
-        </main>
-
-        <Footer />
-
-        <ShoppingCart
-          isOpen={isCartOpen}
-          onClose={() => setIsCartOpen(false)}
-          items={cartItems}
-          onUpdateQuantity={handleUpdateQuantity}
-          onRemoveItem={handleRemoveItem}
-        />
-
-        <SocialMediaFixed />
-
-        <Toaster />
-      </div>
+    </Suspense>
   );
 }
