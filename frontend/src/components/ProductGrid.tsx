@@ -43,7 +43,7 @@ export function ProductGrid({ products, showAll = false }: ProductGridProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {displayedProducts.map((product) => (
               <div key={product.id} className="bg-white bg-opacity-90 rounded-lg p-4 shadow-md">
-                <div className="relative overflow-hidden rounded-lg mb-2 bg-gray-50" style={{ height: '120px' }}>
+                <div className="relative overflow-hidden rounded-lg mb-2 bg-gray-50" style={{ height: '350px' }}>
                   <img
                     src={product.image}
                     alt={product.name}
