@@ -128,7 +128,7 @@ export function AdminPanel({ products, onAddProduct, onDeleteProduct, onEditProd
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2 text-white">GAMA</label>
-                <Select value={newProduct.gama} onValueChange={(value: 'alta' | 'media' | 'baja' | '') => setNewProduct({ ...newProduct, gama: value })}>
+                <Select value={newProduct.gama} onValueChange={(value: string) => setNewProduct({ ...newProduct, gama: value })}>
                   <SelectTrigger className="!bg-white text-black">
                     <SelectValue placeholder="Gama" />
                   </SelectTrigger>
@@ -235,7 +235,7 @@ export function AdminPanel({ products, onAddProduct, onDeleteProduct, onEditProd
                   <label className="block text-sm font-medium mb-2 text-white">GAMA</label>
                   <Select
                     value={editingProduct?.gama || 'media'}
-                    onValueChange={(value: 'alta' | 'media' | 'baja' | '') =>
+                    onValueChange={(value: string) =>
                       setEditingProduct({ ...editingProduct!, gama: value })
                     }
                   >
