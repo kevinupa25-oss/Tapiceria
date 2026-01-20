@@ -179,7 +179,7 @@ export function AdminPanel({ products, onAddProduct, onDeleteProduct, onEditProd
                     </div>
                     <div>
                       <p className="text-xs text-black uppercase tracking-wide font-semibold">Gama</p>
-                      <p className="text-sm text-black font-medium">{product.gama}</p>
+                      <p className="text-sm text-black font-medium">{product.gama.toUpperCase()}</p>
                     </div>
                     <div className="flex space-x-2 mt-2">
                       <Button
