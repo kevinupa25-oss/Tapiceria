@@ -35,7 +35,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
 
           <Button
-            onClick={() => window.open('https://wa.me/4493659516', '_blank')}
+            onClick={() => window.open(`https://wa.me/4493659516?text=${encodeURIComponent(`Hola, me interesa más información sobre ${product.name}`)}`, '_blank')}
             className="w-full bg-orange-500 hover:bg-orange-600 text-white px-8 transition-all duration-300 hover:scale-105 hover:shadow-lg"
           >
             Te interesa? Contactanos
