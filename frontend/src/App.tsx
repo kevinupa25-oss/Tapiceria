@@ -17,7 +17,7 @@ import { useAuth } from './components/AuthContext';
 
 // Interfaces
 interface Product {
-  id: number;
+  id: string;
   name: string;
   brand: string;
   price: number;
@@ -32,7 +32,7 @@ interface Product {
 }
 
 interface CartItem {
-  id: number;
+  id: string;
   name: string;
   brand: string;
   price: number;
