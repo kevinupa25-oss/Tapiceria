@@ -5,7 +5,7 @@ export function SocialMediaFixed() {
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4">
       {/* WhatsApp */}
       <a
-        href={`https://wa.me/4493659516?text=${encodeURIComponent('Hola, me interesa atención más personalizada')}`}
+        href={`https://wa.me/4491519829?text=${encodeURIComponent('Hola, me interesa atención más personalizada')}`}
         target="_blank"
         rel="noopener noreferrer"
         className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
