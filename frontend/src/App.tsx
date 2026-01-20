@@ -291,8 +291,10 @@ export default function App() {
   };
 
   const handleEditProduct = async (id: string, updatedProduct: Omit<Product, 'id'>) => {
+    console.log('Editing product:', id, updatedProduct);
     try {
       const savedProduct = await productsAPI.update(id, updatedProduct);
+      console.log('Saved product:', savedProduct);
       setProducts(products.map(p => p.id === id ? { ...savedProduct, id: savedProduct._id } : p));
       toast.success('Producto actualizado');
     } catch (error) {

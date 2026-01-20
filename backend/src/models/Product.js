@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
   },
   gama: {
     type: String,
-    enum: ['alta', 'media', 'baja'],
+    enum: ['alta', 'media', 'baja', 'ninguna'],
     default: 'media'
   },
   image: {
