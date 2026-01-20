@@ -60,7 +60,7 @@ export function ProductGrid({ products, showAll = false }: ProductGridProps) {
                 </div>
                 <div>
                   <p className="text-xs text-black uppercase tracking-wide font-semibold">Gama</p>
-                  <p className="text-sm text-black font-medium">{product.gama.toUpperCase()}</p>
+                  <p className="text-sm text-black font-medium">{product.gama && product.gama !== 'ninguna' ? product.gama.toUpperCase() : ''}</p>
                 </div>
                 <Button
                   onClick={() => window.open('https://wa.me/4499788321', '_blank')}

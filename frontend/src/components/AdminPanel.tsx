@@ -133,7 +133,7 @@ export function AdminPanel({ products, onAddProduct, onDeleteProduct, onEditProd
                     <SelectValue placeholder="Gama" />
                   </SelectTrigger>
                   <SelectContent className="text-black">
-                    <SelectItem value="">Ninguna</SelectItem>
+                    <SelectItem value="ninguna">Ninguna</SelectItem>
                     <SelectItem value="baja">Baja</SelectItem>
                     <SelectItem value="media">Media</SelectItem>
                     <SelectItem value="alta">Alta</SelectItem>
@@ -180,7 +180,7 @@ export function AdminPanel({ products, onAddProduct, onDeleteProduct, onEditProd
                     </div>
                     <div>
                       <p className="text-xs text-black uppercase tracking-wide font-semibold">Gama</p>
-                      <p className="text-sm text-black font-medium">{product.gama.toUpperCase()}</p>
+                      <p className="text-sm text-black font-medium">{product.gama && product.gama !== 'ninguna' ? product.gama.toUpperCase() : ''}</p>
                     </div>
                     <div className="flex space-x-2 mt-2">
                       <Button
@@ -243,7 +243,7 @@ export function AdminPanel({ products, onAddProduct, onDeleteProduct, onEditProd
                       <SelectValue placeholder="Gama" />
                     </SelectTrigger>
                                         <SelectContent className="text-black">
-                      <SelectItem value="">Ninguna</SelectItem>
+                      <SelectItem value="ninguna">Ninguna</SelectItem>
                       <SelectItem value="baja">Baja</SelectItem>
                       <SelectItem value="media">Media</SelectItem>
                       <SelectItem value="alta">Alta</SelectItem>

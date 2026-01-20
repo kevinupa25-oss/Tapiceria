@@ -30,7 +30,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
         <div className="p-4">
           <div className="mb-2">
-            <p className="text-sm text-gray-500"><strong>Gama:</strong> {product.gama.toUpperCase()}</p>
+            <p className="text-sm text-gray-500"><strong>Gama:</strong> {product.gama && product.gama !== 'ninguna' ? product.gama.toUpperCase() : ''}</p>
             <p className="font-medium text-gray-900"><strong>Nombre del producto:</strong> {product.name}</p>
           </div>
 
