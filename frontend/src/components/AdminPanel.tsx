@@ -128,11 +128,12 @@ export function AdminPanel({ products, onAddProduct, onDeleteProduct, onEditProd
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2 text-white">GAMA</label>
-                <Select value={newProduct.gama} onValueChange={(value: 'alta' | 'media' | 'baja') => setNewProduct({ ...newProduct, gama: value })}>
+                <Select value={newProduct.gama} onValueChange={(value: 'alta' | 'media' | 'baja' | '') => setNewProduct({ ...newProduct, gama: value })}>
                   <SelectTrigger className="!bg-white text-black">
                     <SelectValue placeholder="Gama" />
                   </SelectTrigger>
                   <SelectContent className="text-black">
+                    <SelectItem value="">Ninguna</SelectItem>
                     <SelectItem value="baja">Baja</SelectItem>
                     <SelectItem value="media">Media</SelectItem>
                     <SelectItem value="alta">Alta</SelectItem>
@@ -234,7 +235,7 @@ export function AdminPanel({ products, onAddProduct, onDeleteProduct, onEditProd
                   <label className="block text-sm font-medium mb-2 text-white">GAMA</label>
                   <Select
                     value={editingProduct?.gama || 'media'}
-                    onValueChange={(value: 'alta' | 'media' | 'baja') =>
+                    onValueChange={(value: 'alta' | 'media' | 'baja' | '') =>
                       setEditingProduct({ ...editingProduct!, gama: value })
                     }
                   >
@@ -242,6 +243,7 @@ export function AdminPanel({ products, onAddProduct, onDeleteProduct, onEditProd
                       <SelectValue placeholder="Gama" />
                     </SelectTrigger>
                                         <SelectContent className="text-black">
+                      <SelectItem value="">Ninguna</SelectItem>
                       <SelectItem value="baja">Baja</SelectItem>
                       <SelectItem value="media">Media</SelectItem>
                       <SelectItem value="alta">Alta</SelectItem>
