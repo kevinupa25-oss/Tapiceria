@@ -63,7 +63,7 @@ export function ProductGrid({ products, showAll = false }: ProductGridProps) {
                   <p className="text-sm text-black font-medium">{product.gama && product.gama !== 'ninguna' ? product.gama.toUpperCase() : ''}</p>
                 </div>
                 <Button
-                  onClick={() => window.open('https://wa.me/4499788321', '_blank')}
+                  onClick={() => window.open('https://wa.me/4493659516', '_blank')}
                   className="w-full mt-2 bg-orange-500 hover:bg-orange-600 text-white px-8 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   Te interesa? Contactanos
