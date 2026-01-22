@@ -59,7 +59,7 @@ export function Location() {
     </p>
     <Button
       className="mt-2 bg-green-500 hover:bg-green-600 text-white"
-      onClick={() => window.open('https://wa.me/4499143641', '_blank')}
+      onClick={() => window.open('https://wa.me/4491069969', '_blank')}
     >
       Contáctanos
     </Button>
