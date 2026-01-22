@@ -57,6 +57,12 @@ export function Location() {
     <p className="text-gray-700 text-sm">
       Calle Héroe de Nacozari Norte 2204<br />Aguascalientes, Ags.<br />Tel: 4499143641
     </p>
+    <Button
+      className="mt-2 bg-green-500 hover:bg-green-600 text-white"
+      onClick={() => window.open('https://wa.me/4499143641', '_blank')}
+    >
+      Contáctanos
+    </Button>
   </div>
 </div>
 
